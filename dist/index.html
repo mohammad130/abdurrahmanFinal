@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v6.2.0/css/ol.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v6.2.0/build/ol.js"></script>
+    </head>
+    <body>
+        <script src="../ol/ol.js"></script>
+
+        <script>
+            var Hacettep = new ol.proj.transform(
+                [32.7369 ,39.8730,18],
+                'EPSG:4326',
+                'EPSG:3857',
+                
+            )
+            var istanbul = new ol.proj.transform(
+                [28.9784 ,41.0082],
+                'EPSG:4326',
+                'EPSG:3857',
+                
+            )
+            function moveTo(location) {
+                map.getView().setCenter(location)
+                Zoom: 18 ;
+            }
+        </script>
+        <div id="map" class="map"></div>        
+        <script src="map_handler.js"></script>
+        <div id="right_panel" class="right_panel">
+            <br>
+            <br>
+            <button onclick="moveTo(Hacettep)" >move to Ankara</button>
+            <p></p>
+            <button onclick="moveTo(istanbul)" >move to Istabul</button>
+            <br>
+            <p>Tree Type:</p>
+            <select  id="tree_type">
+                <option value="Çam">Çam Ağacı</option>
+                <option value="Kavak">Kavak Ağacı</option>                            
+            </select>
+            <p style="text-align:center;">Latitude:</p>
+            <input style =" width: 100%;" class="relative" type="text" id="Latitude"></input>
+
+
+            <p style="text-align:center;" >Longitude:</p>
+            <input style =" width: 100%;" type="text" id="Longitude"></input>
+
+
+            <p style="text-align:center;">Height:</p>
+            <input style =" width: 100%;" type="text" id="tree_height"></input>
+
+            
+            <p style="text-align:center;">Age:</p>
+            <input style =" width: 100%;" classs ="height" type="text" id="tree_age"></input>
+            <br>
+            <br>
+         
+            <br>
+            <button style = "text-align:center;" onclick="submit();">Submit</button>
+        </div>
+    </body>
+</html>
